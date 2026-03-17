@@ -12,15 +12,22 @@ import java.util.Scanner;
 public class StudentDaoImpl implements StudentDao {
 
     @Override
-    public void add(Student s) {
+    public boolean add(Student s) {
         String sql = "INSERT INTO tb_student(student_no, name, age, class_name) VALUES(?,?,?,?)";
+        boolean flag = false;
         try (Connection conn = DBUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, s.getStudentNo());
             ps.setString(2, s.getName());
             ps.setInt(3, s.getAge());
             ps.setString(4, s.getClass_name());
-            ps.executeUpdate();
+            int p = ps.executeUpdate();
+            if(p==1){
+                flag=true;
+            }else {
+                flag=false;
+            }
         } catch (SQLException e) { e.printStackTrace(); }
+        return flag;
     }
 
     public void delete(String student_no){
