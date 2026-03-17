@@ -3,9 +3,9 @@ package com.example.sms.util;
 import java.sql.*;
 
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://mysql-30f49afa-zhangyanlong1213-7551.f.aivencloud.com:13538/db_student?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "avnadmin";
-    private static final String PASSWORD = "AVNS_i1tCRcZ6QLK6xHm2Im6"; // 提醒实习生修改密码
+    private static final String URL = "jdbc:mysql://49.232.53.153:3306/db_student?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String USER = "root";
+    private static final String PASSWORD = "Hu123456!9"; // 提醒实习生修改密码
 
     static {
         try {

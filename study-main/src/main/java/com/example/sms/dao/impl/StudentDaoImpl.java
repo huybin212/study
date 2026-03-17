@@ -13,12 +13,12 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void add(Student s) {
-        String sql = "INSERT INTO tb_student(student_no, name, age, email) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO tb_student(student_no, name, age, class_name) VALUES(?,?,?,?)";
         try (Connection conn = DBUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, s.getStudentNo());
             ps.setString(2, s.getName());
             ps.setInt(3, s.getAge());
-            ps.setString(4, s.getEmail());
+            ps.setString(4, s.getClass_name());
             ps.executeUpdate();
         } catch (SQLException e) { e.printStackTrace(); }
     }
@@ -32,12 +32,12 @@ public class StudentDaoImpl implements StudentDao {
         }catch ( SQLException e) { e.printStackTrace(); }
     }
 
-    public void update(int Insertage,String Name,String Email,String student_no) {
-        String sql = "UPDATE tb_student SET age = ?,name = ?,email = ?  WHERE student_no = ?";
+    public void update(int Insertage,String Name,String class_name,String student_no) {
+        String sql = "UPDATE tb_student SET age = ?,name = ?,class_name = ?  WHERE student_no = ?";
         try(Connection conn = DBUtil.getConnection();PreparedStatement ps =conn.prepareStatement(sql)){
             ps.setInt(1,Insertage);
             ps.setString(2,Name);
-            ps.setString(3,Email);
+            ps.setString(3,class_name);
             ps.setString(4,student_no);
             ps.executeUpdate();
 

@@ -12,17 +12,20 @@ public class MainApp {
 
         //1. 新增
         /*System.out.println("--- 正在添加学生 ---");
-        dao.add(new Student("S001", "张三", 20, "zhangsan@test.com"));
-        dao.add(new Student("S002", "李四", 22, "lisi@test.com"));
-        dao.add(new Student("S003", "李华", 21, "lihua@test.com"));
-        dao.add(new Student("S004", "王五", 23, "wangwu@test.com"));
-        dao.add(new Student("S005", "赵六", 26, "zhaoliu@test.com"));*/
+        dao.add(new Student("S001", "张三", 20, "2601"));
+        dao.add(new Student("S002", "李四", 22, "2603"));
+        dao.add(new Student("S003", "李华", 21, "2605"));
+        dao.add(new Student("S004", "王五", 23, "2609"));
+        dao.add(new Student("S005", "赵六", 26, "2608"));
+        System.out.println("添加成功！");*/
         //2.删除
-     /* System.out.println("--- 正在按学号删除学生 ---");
+        /*System.out.println("--- 正在按学号删除学生 ---");
         dao.delete("S001");
         dao.delete("S002");
         dao.delete("S003");
-        dao.delete("S004");*/
+        dao.delete("S004");
+        dao.delete("S005");
+        System.out.println("删除成功！");*/
         //3.修改
         System.out.println("--- 正在按学号修改学生 ---");
 
