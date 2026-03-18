@@ -7,27 +7,39 @@ import com.example.sms.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
 public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean add(Student s) {
+        if(s==null||s.getStudentNo()==null){
+            System.out.println("学生对象或学号不能为空！");
+            return false;
+        }
+
         String sql = "INSERT INTO tb_student(student_no, name, age, class_name) VALUES(?,?,?,?)";
-        boolean flag = false;
+
         try (Connection conn = DBUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, s.getStudentNo());
             ps.setString(2, s.getName());
             ps.setInt(3, s.getAge());
             ps.setString(4, s.getClass_name());
-            int p = ps.executeUpdate();
-            if(p==1){
-                flag=true;
+            int effectrows = ps.executeUpdate();
+            if(effectrows>0){
+                return true;
             }else {
-                flag=false;
+                return false;
             }
-        } catch (SQLException e) { e.printStackTrace(); }
-        return flag;
+
+        } catch (SQLIntegrityConstraintViolationException e){
+            System.out.println("学号"+s.getStudentNo()+"已存在！");
+            return false;
+        }catch (SQLException e) {System.out.println("新增学生时发生数据库异常："+e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void delete(String student_no){
@@ -48,7 +60,10 @@ public class StudentDaoImpl implements StudentDao {
             ps.setString(4,student_no);
             ps.executeUpdate();
 
-        }catch ( SQLException e) { e.printStackTrace(); }
+        }catch ( SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
 

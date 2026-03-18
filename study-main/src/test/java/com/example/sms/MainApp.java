@@ -11,12 +11,12 @@ public class MainApp {
         StudentDao dao = new StudentDaoImpl();
 
         //1. 新增
-        System.out.println("--- 正在添加学生 ---");
+        /*System.out.println("--- 正在添加学生 ---");
         dao.add(new Student("S001", "张三", 20, "2601"));
         dao.add(new Student("S002", "李四", 22, "2603"));
         dao.add(new Student("S003", "李华", 21, "2605"));
         dao.add(new Student("S004", "王五", 23, "2609"));
-        dao.add(new Student("S005", "赵六", 26, "2608"));
+        dao.add(new Student("S005", "赵六", 26, "2608"));*/
         
         //2.删除
     /*    System.out.println("--- 正在按学号删除学生 ---");
