@@ -11,7 +11,7 @@ public class MainApp {
         StudentDao dao = new StudentDaoImpl();
 
         //1. 新增
-        /*System.out.println("--- 正在添加学生 ---");
+       /* System.out.println("--- 正在添加学生 ---");
         dao.add(new Student("S001", "张三", 20, "2601"));
         dao.add(new Student("S002", "李四", 22, "2603"));
         dao.add(new Student("S003", "李华", 21, "2605"));
@@ -41,6 +41,11 @@ public class MainApp {
         String insert_email =  new Scanner(System.in).next();
 
         dao.update(insert_age,insert_name,insert_email,"S001");*/
+        //4.按学号查询
+        System.out.println("请输入需要查询的学号！");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
 
+        System.out.println(dao.findByStudentNo(input));
     }
 }

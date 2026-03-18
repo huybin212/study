@@ -27,7 +27,7 @@ public class Student {
     public Integer getAge() { return age; }
     public void setAge(Integer age) { this.age = age; }
     public String getClass_name() { return class_name; }
-    public void setEmail(String class_name) { this.class_name = this.class_name; }
+    public void setClass_name(String class_name) { this.class_name = class_name; }
 
     @Override
     public String toString() {

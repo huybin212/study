@@ -4,10 +4,7 @@ import com.example.sms.dao.StudentDao;
 import com.example.sms.entity.Student;
 import com.example.sms.util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 import java.util.Scanner;
 
 public class StudentDaoImpl implements StudentDao {
@@ -64,6 +61,26 @@ public class StudentDaoImpl implements StudentDao {
 
             e.printStackTrace();
         }
+    }
+    // 根据学号查询单个学生
+    public Student findByStudentNo(String studentNo) {
+        String sql = "SELECT student_no, name, age, class_name FROM tb_student WHERE student_no = ?";
+        Student student = null; // 初始化返回对象
+        try (Connection conn = DBUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, studentNo);
+            // 执行查询，返回结果集
+            try (ResultSet rs = ps.executeQuery()) {
+                // 如果查询到结果，封装为Student对象
+                if (rs.next()) {
+                    student = new Student();
+                    student.setStudentNo(rs.getString("student_no"));
+                    student.setName(rs.getString("name"));
+                    student.setAge(rs.getInt("age"));
+                    student.setClass_name(rs.getString("class_name"));
+                }
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        return student; // 未查到则返回null
     }
 
 
