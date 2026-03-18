@@ -28,24 +28,22 @@ public class MainApp {
         System.out.println("删除成功！");*/
         //3.修改
         /*System.out.println("--- 正在按学号修改学生 ---");
-
         int insert_age;
         Scanner sc =new Scanner(System.in);
         System.out.println("请输入修改的年龄！");
         insert_age =  new Scanner(System.in).nextInt();
-
         System.out.println("请输入修改的名字");
         String insert_name =  new Scanner(System.in).next();
-
         System.out.println("请输入修改的邮箱");
         String insert_email =  new Scanner(System.in).next();
-
         dao.update(insert_age,insert_name,insert_email,"S001");*/
         //4.按学号查询
-        System.out.println("请输入需要查询的学号！");
+       /* System.out.println("请输入需要查询的学号！");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+        System.out.println(dao.findByStudentNo(input));*/
+        //5.查询所有学生
+        System.out.println(dao.findAll());
 
-        System.out.println(dao.findByStudentNo(input));
     }
 }
