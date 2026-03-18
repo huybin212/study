@@ -43,7 +43,13 @@ public class MainApp {
         String input = scanner.nextLine();
         System.out.println(dao.findByStudentNo(input));*/
         //5.查询所有学生
-        System.out.println(dao.findAll());
+//        System.out.println(dao.findAll());
+        //6.按班级查询所有学生
+        System.out.println("请输入需要查询的班级！");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        System.out.println(dao.findByClass_name(input));
+
 
     }
 }

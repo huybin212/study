@@ -102,6 +102,29 @@ public class StudentDaoImpl implements StudentDao {
         } catch (SQLException e) { e.printStackTrace(); }
         return studentList; // 返回所有学生列表（无数据则返回空列表）
     }
+    //按班级查询学生
 
 
+    @Override
+    public Student findByClass_name(String class_name) {
+        String sql = "SELECT * FROM tb_student WHERE class_name = ?";
+        Student student = null;
+        try (Connection conn = DBUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, class_name);
+            // 执行查询，返回结果集
+            try (ResultSet rs = ps.executeQuery()) {
+                // 如果查询到结果，封装为Student对象
+
+                if (rs.next()) {
+                    student = new Student();
+                    student.setStudentNo(rs.getString("student_no"));
+                    student.setName(rs.getString("name"));
+                    student.setAge(rs.getInt("age"));
+                    student.setClass_name(rs.getString("class_name"));
+                }
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        return student; // 未查到则返回null
+
+    }
 }
